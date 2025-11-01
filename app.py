@@ -5,7 +5,7 @@ import google.generativeai as genai  # <-- The correct, original library
 # -----------------------------
 # 1) ADD YOUR API KEY HERE
 # -----------------------------
-GEMINI_API_KEY = os.environ.get("AIzaSyBtFykIc38p2XBESPdPijxaZ5D036heZEU") # <-- PASTE YOUR KEY HERE
+GEMINI_API_KEY = os.getenv("google") # <-- PASTE YOUR KEY HERE
 if not GEMINI_API_KEY or GEMINI_API_KEY == "Your Api Key":
     raise RuntimeError("Put your real Gemini API key in GEMINI_API_KEY.")
 
@@ -111,4 +111,5 @@ def study_endpoint():
         return jsonify({"error": f"Error from API: {error_message}"}), 500
 
 if __name__ == "__main__":
+
     app.run(host="0.0.0.0", port=8000, debug=True)
